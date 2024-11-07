@@ -15,10 +15,10 @@ mod builder;
 mod lossy_pht;
 
 pub use builder::*;
-
+use bytemuck::AnyBitPattern;
 /// `Symbol`s are small (up to 8-byte) segments of strings, stored in a [`Compressor`][`crate::Compressor`] and
 /// identified by an 8-bit code.
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, AnyBitPattern)]
 pub struct Symbol(u64);
 
 assert_sizeof!(Symbol => 8);
